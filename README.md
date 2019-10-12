@@ -1,8 +1,8 @@
 # data-source-visualization base on g6 3.1.0
 
-<img src="https://github.com/foolzhang/data-source-visualization/blob/master/img/demo.png" height=150>
+<img src="https://github.com/foolzhang/data-source-visualization/blob/master/img/demo.png" height=850>
 
-<img src="https://github.com/foolzhang/data-source-visualization/blob/master/img/demo2.png" height=150>
+<img src="https://github.com/foolzhang/data-source-visualization/blob/master/img/demo2.png" height=650>
 
 ## g6
 g6 source code  in ./src  
