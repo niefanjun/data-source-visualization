@@ -1,0 +1,12 @@
+{
+    "plugins": [
+        "transform-remove-strict-mode"
+    ],
+    "presets": [
+        ["@babel/preset-env",{
+            "loose": true,
+            "modules": false
+        }]
+        // ,"stage-0" // 该特性规范己经被起草，将会被纳入标准里.
+    ]
+}
