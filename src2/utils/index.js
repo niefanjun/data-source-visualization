@@ -15,7 +15,7 @@ export default {
         });
         return fieldNode
     },
-    
+
     createGraphData:function(data,tableName,xAxis,topBottom = 45){
 
         // addHeaderNode
@@ -44,7 +44,37 @@ export default {
 
         return nodes.concat(fieldNode);
     },
-    
+
+    createGraphDataByDrag:function({data,tableName,xAxis,yAxis,topBottom = 45}){
+        console.log(data,tableName,xAxis,yAxis,topBottom,'test');
+        // addHeaderNode
+        let nodes = [{
+            id:tableName + '-header',
+            x: xAxis,
+            y: yAxis,
+            //y: xAxis - 30,
+            shape: "headNode",
+            name: tableName,
+            groupId:tableName,
+        }];
+
+        let fieldNode = data.map((item,index)=>{
+            return {
+                id:tableName + index,
+                x: xAxis,
+                y: xAxis + index * topBottom,
+                shape: "thinkNode",
+                // shape:'rect',
+                // label:item.name + index,
+                name: item.name + index,
+                select:1,
+                groupId:tableName,
+            }
+        });
+
+        return nodes.concat(fieldNode);
+    },
+
     getImage:function(url){
         return new Promise((resolve,reject)=>{
             let img = new Image();

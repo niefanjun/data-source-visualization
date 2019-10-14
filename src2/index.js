@@ -5,9 +5,9 @@ import './node';
 import './edge';
 import './behavior';
 
-if( Math.random()*10 > 5){
-    utils.backGroundDraw();    
-}
+/*if( Math.random()*10 > 5){
+    utils.backGroundDraw();
+}*/
 
 const graph = new G6.Graph({
     container: 'root',
@@ -104,21 +104,52 @@ let db3 = [{
     name: "足球篮球排球",
 }];
 
-let node1 = utils.createGraphData(db1, 'db1', 200);
+/*let node1 = utils.createGraphData(db1, 'db1', 200);
+let node2 = utils.createGraphDataByDrag({
+    data: db2,
+    tableName: 'db2',
+    xAxis: 300,
+    yAxis: 300
+})
 let node3 = utils.createGraphData(db3, 'db3', 550);
 
-let nodes = node1.concat(node3);
-
+let nodes = node1.concat(node3).concat(node2);
 window.onload = function () {
     graph.data({
         nodes: nodes,
-        // edges:[{
-        //     target:"db10",
-        //     source:"db30",
-        //     style:{
-        //         lineDash:[]
-        //     }
-        // }]
     });
     graph.render();
+}*/
+
+
+window.onload = function () {
+    let item = null;
+    let nodes = [];
+    let itemcont = 0;
+    let lis = document.getElementsByTagName('li');
+    let canvas = document.getElementById('canvas_1');
+    lis[0].addEventListener('mousedown',function(){
+        console.log('mousedown');
+        item = db1;
+    })
+    lis[1].addEventListener('mousedown',function(){
+        console.log('mousedown');
+        item = db3;
+    })
+    canvas.addEventListener('mouseup',function(){
+        console.log('mouseup');
+        if (item) {
+            console.log(nodes.length,'length');
+            let node = utils.createGraphData(item,'db'+nodes.length,(itemcont+1)*100);
+            itemcont++;
+            item = null;
+            console.log(node,'node');
+            nodes = nodes.concat(node);
+            graph.data({
+                nodes: nodes,
+            });
+            graph.render();
+        }
+    })
+
 }
